@@ -1,2 +1,2 @@
-# Effective Mobile Company's First Project
+# Effective Mobile Company's Test Project
 
