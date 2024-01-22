@@ -1,0 +1,40 @@
+# Define the individual filter input
+input IndividualFilter {
+  name: String
+  surname: String
+  patronymic: String
+  ageMin: Int
+  ageMax: Int
+  gender: String
+  country_id: String
+}
+
+# Define the Individual type
+type Individual {
+  id: ID!
+  name: String!
+  surname: String!
+  patronymic: String
+  age: Int
+  gender: String
+  country_id: String
+}
+
+# Define the Query type
+type Query {
+  # Get a list of individuals with optional filtering, pagination, and sorting
+  getIndividuals(filter: IndividualFilter, page: Int, pageSize: Int, sortBy: String): [Individual]
+  getIndividualById(id: ID!): Individual
+}
+
+# Define the Mutation type
+type Mutation {
+  # Add a new individual
+  addIndividual(name: String!, surname: String!, patronymic: String): Individual
+
+  # Update an existing individual
+  updateIndividual(id: ID!, name: String, surname: String, patronymic: String): String
+
+  # Delete an individual by ID
+  deleteIndividual(id: ID!): Boolean
+}
