@@ -29,9 +29,12 @@ func (u *UserRepo) CheckUserExists(ctx context.Context, name, surname string, pa
 
 	if patronymic != nil {
 		query += " AND patronymic = $3"
+	} else if patronymic == nil {
+		query += " AND patronymic IS NULL"
 	} else {
 		query += " AND patronymic = ''"
 	}
+
 	var userID int64
 	var err error
 
